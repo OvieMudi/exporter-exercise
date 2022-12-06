@@ -35,9 +35,10 @@ async function StartApp() {
   };
 
   const exporter = HBExporter(exporterDeps);
+  const readStream = mockOpenFile();
 
   try {
-    exporter.StartExport(myUser, mockOpenFile());
+    await exporter.StartExport(myUser, readStream);
   } catch (e) {
     console.log(e);
   }
